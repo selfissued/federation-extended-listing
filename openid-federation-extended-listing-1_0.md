@@ -1,4 +1,4 @@
-!%%%
+%%%
 title = "OpenID Federation Extended Subordinate Listing 1.0 - draft 00"
 abbrev = "openid-federation-extended-listing"
 ipr = "none"
