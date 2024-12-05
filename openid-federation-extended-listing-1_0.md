@@ -27,9 +27,9 @@ organization="Raidiam"
     email = "michael.fraser@raidiam.com"
 
 [[author]]
-initials="L."
+initials="Ł."
 surname="Jaromin"
-fullname="Lukasz Jaromin"
+fullname="Łukasz Jaromin"
 organization="Raidiam"
     [author.address]
     email = "lukasz.jaromin@raidiam.com"
@@ -41,18 +41,19 @@ fullname="Michael B. Jones"
 organization="Self-Issued Consulting"
     [author.address]
     email = "michael_b_jones@hotmail.com"
+    uri = "https://self-issued.info/"
 
 %%%
 
 .# Abstract
 
-This specification acts as an extension to the [@OpenID.Federation]. It outlines methods to interact with a given Federation with a potentially large number of registered Entities, as well as mechanisms to retrieve multiple entity statements along with associated details in a single request.
+This specification acts as an extension to the [@!OpenID.Federation]. It defines methods to interact with a given Federation with a potentially large number of registered Entities, as well as mechanisms to retrieve multiple entity statements along with associated details in a single request.
 
 {mainmatter}
 
 # Introduction
 
-The extending listing endpoint has been created to address two outstanding issues identified in [@OpenID.Federation].
+The extending listing endpoint has been created to address two outstanding issues identified in [@!OpenID.Federation].
 
 ## Response Size
 
@@ -68,7 +69,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 # Terminology
 
-This specification uses the terms "Entity Identifier", "Subordinate Statement", "Trust Anchor", "Intermediate", "Federation Entity", "Entity", "federation_list_endpoint", and "Immediate Subordinate Entity" as defined in [@OpenID.Federation], "NumericDate" as defined in [@!RFC7591].
+This specification uses the terms "Entity Identifier", "Subordinate Statement", "Trust Anchor", "Intermediate", "Federation Entity", "Entity", "federation_list_endpoint", and "Immediate Subordinate Entity" as defined in [@!OpenID.Federation], "NumericDate" as defined in [@!RFC7591].
 
 # Extended Subordinate Listing Endpoint
 
@@ -96,7 +97,7 @@ The endpoint accepts all parameters defined in the `federation_list_endpoint` in
 | limit            | OPTIONAL         | Positive Integer  | Requested number of results included in the response.<br><br> If this parameter is present, the number of results in the returned list must not be greater than the minimum of the server's upper limit and the value of this parameter.<br><br>If this parameter is not present the server MUST fall back on the upper limit.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | updated_after    | OPTIONAL         | NumericDate       | Epoch time constraining the response to include only Entity identifiers with updates at or after this time. <br><br>When absent, there is no cutoff for how long ago updates occurred to Entities being listed.<br><br>When present the `registered`, `updated`, `revoked` MUST be included in the response unless the `audit_timestamps` parameter is set to `false`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ||
 | updated_before   | OPTIONAL         | NumericDate       | Epoch time constraining the response to include only Entity identifiers with updates at or before this time.<br><br>When absent, there is no cutoff before which updates occurred to listed Entities.<br><br>When present the `registered`, `updated`, `revoked` MUST be included in the response unless the `audit_timestamps` parameter is set to `false`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ||
-| claims           | OPTIONAL         | Array             | List of claims to be included in the response for each returned Immediate Subordinate Entity.<br><br> If this parameter is NOT present or it is an empty array, the signed entity statement MUST be the only claim for each Immediate Subordinate Entity<br><br>If this parameter is present and it is NOT an empty array each JSON object that represents the Immediate Subordinate Entity MUST include the requested claims for a subordinate entity statement if available.<br><br>Entities that expose the extended subordinate listing endpoint MUST support all top level statement claims defined in [@OpenID.Federation]. TBD: Support of requests for discrete entity metdata attributes. ||
+| claims           | OPTIONAL         | Array             | List of claims to be included in the response for each returned Immediate Subordinate Entity.<br><br> If this parameter is NOT present or it is an empty array, the signed entity statement MUST be the only claim for each Immediate Subordinate Entity<br><br>If this parameter is present and it is NOT an empty array each JSON object that represents the Immediate Subordinate Entity MUST include the requested claims for a subordinate entity statement if available.<br><br>Entities that expose the extended subordinate listing endpoint MUST support all top level statement claims defined in [@!OpenID.Federation]. TBD: Support of requests for discrete entity metdata attributes. ||
 | audit_timestamps | OPTIONAL         | Boolean           | Request parameter to control presence of  the `registered`, `updated`, `revoked` audit timestamps attributes for all returned Immediate Subordiates.<br><br>If this parameter absent the audit timestamp attributes mentioned above MUST NOT be present unless `updated_after` and/or `updated_before` parameters are present.<br><br>If this parameter is present and set to `true` the response MUST include the above mentioned audit timestamp attributes for each Immediate Subordinate Entity included in the response.<br><br>If this parameter is present and set to `false` the response MUST NOT include the above mentioned audit timestamp attributes for each Immediate Subordinate Entity included in the response. even irrespective whether the `updated_after` and/or `updated_before` request parameters are pressent.<br><br>                                                     
 
 *Table 1: Additional request parameters accepted by the extended subordinate listing endpoint in addition to the those speficied by the `federation_list_endpoint`*
@@ -131,7 +132,7 @@ Host: trust-anchor.star-federation.example.net
 
 *Figure 4: Request to list all entities and only include trust marks in the response.*
 
-# Extended Subordinate Listing Response
+## Extended Subordinate Listing Response
 
 A successful response MUST use the HTTP status code 200 with the content type `application/json`. The response body is a JSON object containing data specified in the table below.
 
@@ -142,7 +143,7 @@ A successful response MUST use the HTTP status code 200 with the content type `a
 
 *Table 2: Top-level attributes included in the subordinate JSON object returned in the response body*
 
-Each JSON object in the returned `immediate_subordinate_entities` array MAY contain attributes from the sets defined for Entity Statements and Metadata in [@OpenID.Federation] as well as those defined in the table below.
+Each JSON object in the returned `immediate_subordinate_entities` array MAY contain attributes from the sets defined for Entity Statements and Metadata in [@!OpenID.Federation] as well as those defined in the table below.
 
 | **Attribute**                                                 | **Availability** | **Type**          | **Value**                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 |---------------------------------------------------------------|------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -226,7 +227,7 @@ Content-Type: application/json
 
 # Federation Entity Property
 
-In order for entities to advertise the new endpoint, a new property has been defined adding to the existing set of Federation Entity Metadata as defined in [@OpenID.Federation].
+In order for entities to advertise the new endpoint, a new property has been defined adding to the existing set of Federation Entity Metadata as defined in [@!OpenID.Federation].
 
 | **Metadata**                      | **Availability** | **Description**                                                                                                                                                                                                                                                                         |
 |-----------------------------------|------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -349,7 +350,7 @@ Content-Type: application/json
         <author fullname="Vladimir Dzhuvinov">
             <organization>Connect2id</organization>
         </author>
-        <date day="31" month="May" year="2024"/>
+        <date day="24" month="October" year="2024"/>
     </front>
 </reference>
 
@@ -364,6 +365,11 @@ The technology described in this specification was made available from contribut
 # Document History
 
 [[ To be removed from the final specification ]]
+
+-01
+
+* Corrected section hierarchy for Extended Subordinate Listing Response subsection.
+* Made OpenID Federation reference normative.
 
 -00
 
