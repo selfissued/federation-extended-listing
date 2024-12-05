@@ -1,5 +1,5 @@
 %%%
-title = "OpenID Federation Extended Subordinate Listing 1.0 - draft 00"
+title = "OpenID Federation Extended Subordinate Listing 1.0 - draft 01"
 abbrev = "openid-federation-extended-listing"
 ipr = "none"
 workgroup = "OpenID Connect A/B"
@@ -362,6 +362,14 @@ The OpenID Foundation (OIDF) grants to any Contributor, developer, implementer, 
 
 The technology described in this specification was made available from contributions from various sources, including members of the OpenID Foundation and others. Although the OpenID Foundation has taken steps to help ensure that the technology is available for distribution, it takes no position regarding the validity or scope of any intellectual property or other rights that might be claimed to pertain to the implementation or use of the technology described in this specification or the extent to which any license under such rights might or might not be available; neither does it represent that it has made any independent effort to identify any such rights. The OpenID Foundation and the contributors to this specification make no (and hereby expressly disclaim any) warranties (express, implied, or otherwise), including implied warranties of merchantability, non-infringement, fitness for a particular purpose, or title, related to this specification, and the entire risk as to implementing this specification is assumed by the implementer. The OpenID Intellectual Property Rights policy requires contributors to offer a patent promise not to assert certain patent claims against other contributors and against implementers. The OpenID Foundation invites any interested party to bring to its attention any copyrights, patents, patent applications, or other proprietary rights that MAY cover technology that MAY be required to practice this specification.
 
+# Acknowledgements
+
+We would like to thank the following individuals for their contributions to this specification:
+
+- Ralph Bragg
+- Vladimir Dzhuvinov
+- Roland Hedberg
+
 # Document History
 
 [[ To be removed from the final specification ]]
@@ -370,6 +378,7 @@ The technology described in this specification was made available from contribut
 
 * Corrected section hierarchy for Extended Subordinate Listing Response subsection.
 * Made OpenID Federation reference normative.
+* Added Acknowledgements.
 
 -00
 
