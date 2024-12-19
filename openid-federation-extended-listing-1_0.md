@@ -1,5 +1,5 @@
 %%%
-title = "OpenID Federation Extended Subordinate Listing 1.0 - draft 01"
+title = "OpenID Federation Extended Subordinate Listing 1.0 - draft 02"
 abbrev = "openid-federation-extended-listing"
 ipr = "none"
 workgroup = "OpenID Connect A/B"
@@ -374,13 +374,17 @@ We would like to thank the following individuals for their contributions to this
 
 [[ To be removed from the final specification ]]
 
+-02
+
+* TBD
+
 -01
 
 * Corrected section hierarchy for Extended Subordinate Listing Response subsection.
 * Made OpenID Federation reference normative.
 * Renamed the claim name `entity_statement` to `subordinate_statement` in the response.
-* `entity_statement` is not mandatory in the response if not explictly requested
-* Terminology alignments
+* `entity_statement` is not mandatory in the response if not explictly requested.
+* Terminology alignments.
 * Added Acknowledgements.
 
 -00
